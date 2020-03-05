@@ -1,6 +1,8 @@
-package com.custom.okhttp;
+package com.custom.okhttp.ui;
 
 import android.os.Bundle;
+
+import com.custom.okhttp.R;
 
 import androidx.appcompat.app.AppCompatActivity;
 
