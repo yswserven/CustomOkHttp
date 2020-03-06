@@ -32,7 +32,8 @@ public class InterceptorChain {
 
     Response proceed(HttpConnection connection) throws IOException {
         Interceptor interceptor = interceptors.get(index);
-        InterceptorChain chain = new InterceptorChain(interceptors, index + 1, call, connection);
+        InterceptorChain chain = new InterceptorChain(interceptors,
+                index + 1, call, connection);
         return interceptor.intercept(chain);
     }
 }

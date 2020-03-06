@@ -16,7 +16,8 @@ public class Response {
     public Response() {
     }
 
-    public Response(int code, int contentLength, Map<String, String> headers, String body, boolean isKeepAlive) {
+    public Response(int code, int contentLength, Map<String, String> headers, String body,
+                    boolean isKeepAlive) {
         this.code = code;
         this.contentLength = contentLength;
         this.headers = headers;

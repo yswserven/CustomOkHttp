@@ -59,7 +59,7 @@ public class HttpCodec {
         /* 拼接请求体，如果存在请求体 @author Ysw created 2020/3/5 */
         RequestBody body = request.body();
         if (body != null) {
-            protocol.append(body);
+            protocol.append(body.body());
         }
 
         /* 通过 socket 获得的 os 写出请求 @author Ysw created 2020/3/5 */
@@ -149,7 +149,7 @@ public class HttpCodec {
     public String readChunked(InputStream is) throws IOException {
         int len = -1;
         boolean isEmptyData = false;
-        StringBuilder chunked = new StringBuilder();
+        StringBuffer chunked = new StringBuffer();
         while (true) {
             //解析下一个chunk长度
             if (len < 0) {

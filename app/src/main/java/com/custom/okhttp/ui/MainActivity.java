@@ -34,7 +34,6 @@ public class MainActivity extends AppCompatActivity {
             public void onFailure(Call call, Throwable throwable) {
                 Log.d("Ysw", "onFailure: 请求失败");
                 throwable.printStackTrace();
-                Log.d("Ysw", "onFailure: " + throwable.getMessage());
             }
 
             @Override
@@ -59,13 +58,11 @@ public class MainActivity extends AppCompatActivity {
             public void onFailure(Call call, Throwable throwable) {
                 Log.d("Ysw", "onFailure: 请求失败");
                 throwable.printStackTrace();
-                Log.d("Ysw", "onFailure: " + throwable.getMessage());
             }
 
             @Override
             public void onResponse(Call call, Response response) {
                 Log.d("Ysw", "onResponse: 请求成功");
-                Log.d("Ysw", "onResponse: 响应体 " + response.toString());
                 Log.d("Ysw", "onResponse: 响应体 " + response.getBody());
             }
         });

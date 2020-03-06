@@ -9,9 +9,9 @@ import java.util.Map;
  * Created by: Ysw on 2020/3/5.
  */
 public class RequestBody {
-    private final static String CONTENT_TYPE = "application/x-www-from-urlencoded";
-    private final static String CHAREST = "utf-8";
-    private Map<String, String> encodedBody = new HashMap<>();
+    private final static String CONTENT_TYPE = "application/x-www-form-urlencoded";
+    private final static String CHARSET = "utf-8";
+    private Map<String, String> encodedBodys = new HashMap<>();
 
     public String contentType() {
         return CONTENT_TYPE;
@@ -21,9 +21,9 @@ public class RequestBody {
         return body().getBytes().length;
     }
 
-    private String body() {
-        StringBuilder buffer = new StringBuilder();
-        for (Map.Entry<String, String> entry : encodedBody.entrySet()) {
+    String body() {
+        StringBuffer buffer = new StringBuffer();
+        for (Map.Entry<String, String> entry : encodedBodys.entrySet()) {
             buffer.append(entry.getKey())
                     .append("=")
                     .append(entry.getValue())
@@ -37,7 +37,7 @@ public class RequestBody {
 
     public RequestBody add(String name, String value) {
         try {
-            encodedBody.put(URLEncoder.encode(name, CHAREST), URLEncoder.encode(value, CHAREST));
+            encodedBodys.put(URLEncoder.encode(name, CHARSET), URLEncoder.encode(value, CHARSET));
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         }

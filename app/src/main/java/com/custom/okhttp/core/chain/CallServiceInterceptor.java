@@ -26,7 +26,8 @@ public class CallServiceInterceptor implements Interceptor {
         //是否保持连接
         boolean isKeepAlive = false;
         if (headers.containsKey(HttpCodec.HEAD_CONNECTION)) {
-            isKeepAlive = headers.get(HttpCodec.HEAD_CONNECTION).equalsIgnoreCase(HttpCodec.HEAD_VALUE_KEEP_ALIVE);
+            isKeepAlive = headers.get(HttpCodec.HEAD_CONNECTION)
+                    .equalsIgnoreCase(HttpCodec.HEAD_VALUE_KEEP_ALIVE);
         }
         //直接返回响应体 Response 中的 body
         int contentLength = -1;
@@ -36,7 +37,8 @@ public class CallServiceInterceptor implements Interceptor {
         //分块编码数据
         boolean isChunked = false;
         if (headers.containsKey(HttpCodec.HEAD_TRANSFER_ENCODING)) {
-            isChunked = headers.get(HttpCodec.HEAD_TRANSFER_ENCODING).equalsIgnoreCase(HttpCodec.HEAD_VALUE_CHUNKED);
+            isChunked = headers.get(HttpCodec.HEAD_TRANSFER_ENCODING)
+                    .equalsIgnoreCase(HttpCodec.HEAD_VALUE_CHUNKED);
         }
         String body = null;
         if (contentLength > 0) {
@@ -48,6 +50,7 @@ public class CallServiceInterceptor implements Interceptor {
         // 切分响应行的参数 获取响应码 200 表示响应成功
         String[] status = statusLine.split(" ");
         connection.updateLastUseTime();
-        return new Response(Integer.valueOf(status[1]), contentLength, headers, body, isKeepAlive);
+        return new Response(Integer.valueOf(status[1]), contentLength,
+                headers, body, isKeepAlive);
     }
 }

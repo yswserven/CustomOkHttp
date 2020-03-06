@@ -47,10 +47,10 @@ public class Request {
         public Builder url(String url) {
             try {
                 this.url = new HttpUrl(url);
+                return this;
             } catch (MalformedURLException e) {
-                e.printStackTrace();
+                throw new IllegalStateException("Failed Http Url", e);
             }
-            return this;
         }
 
         public Builder addHearder(String name, String value) {
