@@ -11,7 +11,7 @@ import java.util.Map;
 public class RequestBody {
     private final static String CONTENT_TYPE = "application/x-www-form-urlencoded";
     private final static String CHARSET = "utf-8";
-    private Map<String, String> encodedBodys = new HashMap<>();
+    public Map<String, String> encodedBodys = new HashMap<>();
 
     public String contentType() {
         return CONTENT_TYPE;
@@ -21,7 +21,7 @@ public class RequestBody {
         return body().getBytes().length;
     }
 
-    String body() {
+    public String body() {
         StringBuffer buffer = new StringBuffer();
         for (Map.Entry<String, String> entry : encodedBodys.entrySet()) {
             buffer.append(entry.getKey())

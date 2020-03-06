@@ -84,4 +84,14 @@ public class Request {
             return new Request(this);
         }
     }
+
+    @Override
+    public String toString() {
+        return "Request{" +
+                "headers=" + headers +
+                ", method='" + method + '\'' +
+                ", url=" + url +
+                ", body=" + body +
+                '}';
+    }
 }

@@ -11,6 +11,7 @@ import com.custom.okhttp.core.HttpClient;
 import com.custom.okhttp.core.Request;
 import com.custom.okhttp.core.RequestBody;
 import com.custom.okhttp.core.Response;
+import com.custom.okhttp.core.chain.LogInterceptor;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -22,7 +23,10 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        httpClient = new HttpClient.Builder().retrys(3).build();
+        httpClient = new HttpClient.Builder()
+                .addInterceptor(new LogInterceptor())
+                .retrys(3)
+                .build();
     }
 
     public void get(View view) {
@@ -39,7 +43,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call call, Response response) {
                 Log.d("Ysw", "onResponse: 请求成功");
-                Log.d("Ysw", "onResponse: 响应体 " + response.getBody());
             }
         });
 
@@ -63,7 +66,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call call, Response response) {
                 Log.d("Ysw", "onResponse: 请求成功");
-                Log.d("Ysw", "onResponse: 响应体 " + response.getBody());
             }
         });
     }
