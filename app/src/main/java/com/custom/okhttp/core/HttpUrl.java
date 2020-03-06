@@ -14,7 +14,7 @@ public class HttpUrl {
     String file;
     int port;
 
-    public HttpUrl(String url) throws MalformedURLException {
+    HttpUrl(String url) throws MalformedURLException {
         URL url1 = new URL(url);
         host = url1.getHost();
         file = url1.getFile();
