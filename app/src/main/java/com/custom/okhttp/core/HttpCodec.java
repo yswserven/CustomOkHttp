@@ -16,7 +16,13 @@ public class HttpCodec {
     private static final int CR = 13;
     private static final int LF = 10;
     private static final String SPACE = " ";
-    private static final String VERSION = "HTTP/:1.1";
+    /**
+     * 此处 HTTP 协议版本写错 原：HTTP/:1.1,现在：HTTP/1.1
+     * 多了一个冒号 “:”
+     *
+     * @author Ysw created at 2020/3/6 13:34
+     */
+    private static final String VERSION = "HTTP/1.1";
     private static final String COLON = ":";
 
     public static final String HEAD_HOST = "Host";
